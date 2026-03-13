@@ -5,7 +5,7 @@
 
 void main()
 {
-    BST* tree = malloc(sizeof(BST));\
+    BST* tree = malloc(sizeof(BST));
     tree->root = NULL;
 
     bstInsert(tree, 6);
