@@ -1,8 +1,7 @@
-#include <stdbool.h>
 #pragma onсe
+#include <stdbool.h>
 
-typedef struct Node
-{
+typedef struct Node {
     int value;
     struct Node *leftChild;
     struct Node *rightChild;
@@ -11,6 +10,8 @@ typedef struct Node
 typedef struct {
     Node* root;
 } BST;
+
+enum Direction {LEFT, RIGHT};
 
 void bstInsert(BST* tree, int value);
 
