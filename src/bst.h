@@ -18,3 +18,5 @@ void bstInsert(BST* tree, int value);
 bool bstContains(BST* tree, int value);
 
 void bstFree(BST* tree);
+
+void bstFreeNode(Node* node);
