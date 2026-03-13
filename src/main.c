@@ -2,13 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 void main()
 {
     BST* tree = malloc(sizeof(BST));
 
     tree->root = NULL;
-
 
     bstInsert(tree, 6);
 

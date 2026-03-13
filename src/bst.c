@@ -47,7 +47,8 @@ void bstInsert(BST* tree, int value)
     }
 }
 
-bool bstContains(BST* tree, int value) {
+bool bstContains(BST* tree, int value)
+{
     if (tree == NULL) {
         return false;
     }
@@ -66,8 +67,8 @@ bool bstContains(BST* tree, int value) {
     return false;
 }
 
-
-void bstFree(BST* tree) {
+void bstFree(BST* tree)
+{
     if (tree == NULL) {
         return;
     }
@@ -83,7 +84,8 @@ void bstFree(BST* tree) {
     free(tree);
 }
 
-void bstFreeNode(Node* node) {
+void bstFreeNode(Node* node)
+{
     if (node == NULL) {
         return;
     }
