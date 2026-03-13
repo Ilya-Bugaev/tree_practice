@@ -1,4 +1,4 @@
-#pragma onсe
+#pragma once
 #include <stdbool.h>
 
 typedef struct Node {
@@ -7,7 +7,7 @@ typedef struct Node {
     struct Node* rightChild;
 } Node;
 
-typedef struct {
+typedef struct BST {
     Node* root;
 } BST;
 
