@@ -1,5 +1,5 @@
-#include "bst.h"
 #include "inorder.h"
+#include "bst.h"
 #include <stdio.h>
 
 void recInorder(Node *node) {
