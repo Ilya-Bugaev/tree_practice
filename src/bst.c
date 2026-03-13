@@ -11,7 +11,7 @@ void bstInsert(BST* tree, int value)
     Node* prev = NULL;
     enum Direction dir;
 
-    while(root != NULL) {
+    while (root != NULL) {
         int curValue = root->value;
         if (curValue == value) {
             return;
