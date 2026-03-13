@@ -18,4 +18,6 @@ void main()
     printf("%d\n", tree->root->value);
     printf("%d\n", tree->root->leftChild->value);
     printf("%d\n", tree->root->leftChild->rightChild->value);
+
+    bstFree(tree);
 }
