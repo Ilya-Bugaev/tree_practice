@@ -9,7 +9,7 @@ void bstInsert(BST* tree, int value)
 
     Node* root = tree->root;
     Node* prev = NULL;
-    enum Direction dir;
+    Direction dir;
 
     while (root != NULL) {
         int curValue = root->value;
