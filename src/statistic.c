@@ -1,4 +1,5 @@
 #include "bst.h"
+
 #include "statistic.h"
 #include <stdlib.h>
 
