@@ -1,40 +1,33 @@
 #include "bst.h"
 #include <stdlib.h>
 
-void bstInsert(BST *tree, int value)
+void bstInsert(BST* tree, int value)
 {
-    if (tree == NULL)
-    {
+    if (tree == NULL) {
         return;
     }
 
-    Node *root = tree->root;
-    Node *prev = NULL;
+    Node* root = tree->root;
+    Node* prev = NULL;
     Direction dir;
 
-    while (root != NULL)
-    {
+    while (root != NULL) {
         int curValue = root->value;
-        if (curValue == value)
-        {
+        if (curValue == value) {
             return;
         }
         prev = root;
-        if (curValue > value)
-        {
+        if (curValue > value) {
             root = root->leftChild;
             dir = LEFT;
-        }
-        else if (curValue < value)
-        {
+        } else if (curValue < value) {
             root = root->rightChild;
             dir = RIGHT;
         }
     }
 
-    Node *newNode = malloc(sizeof(Node));
-    if (newNode == NULL)
-    {
+    Node* newNode = malloc(sizeof(Node));
+    if (newNode == NULL) {
         return;
     }
 
@@ -42,60 +35,46 @@ void bstInsert(BST *tree, int value)
     newNode->leftChild = NULL;
     newNode->rightChild = NULL;
 
-    if (prev == NULL)
-    {
+    if (prev == NULL) {
         tree->root = newNode;
-    }
-    else
-    {
-        if (dir == LEFT)
-        {
+    } else {
+        if (dir == LEFT) {
             prev->leftChild = newNode;
-        }
-        else
-        {
+        } else {
             prev->rightChild = newNode;
         }
     }
 }
 
-bool bstContains(BST *tree, int value)
+bool bstContains(BST* tree, int value)
 {
-    if (tree == NULL)
-    {
+    if (tree == NULL) {
         return false;
     }
-    Node *current = tree->root;
-    while (current != NULL)
-    {
+    Node* current = tree->root;
+    while (current != NULL) {
         int curValue = current->value;
-        if (curValue == value)
-        {
+        if (curValue == value) {
             return true;
         }
-        if (curValue > value)
-        {
+        if (curValue > value) {
             current = current->leftChild;
-        }
-        else if (curValue < value)
-        {
+        } else if (curValue < value) {
             current = current->rightChild;
         }
     }
     return false;
 }
 
-void bstFree(BST *tree)
+void bstFree(BST* tree)
 {
-    if (tree == NULL)
-    {
+    if (tree == NULL) {
         return;
     }
 
-    Node *root = tree->root;
+    Node* root = tree->root;
 
-    if (root == NULL)
-    {
+    if (root == NULL) {
         free(tree);
         return;
     }
@@ -104,10 +83,9 @@ void bstFree(BST *tree)
     free(tree);
 }
 
-void bstFreeNode(Node *node)
+void bstFreeNode(Node* node)
 {
-    if (node == NULL)
-    {
+    if (node == NULL) {
         return;
     }
 
