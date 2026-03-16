@@ -1,8 +1,8 @@
 #include "checkBst.h"
 #include "iterator.h"
 
-
-bool bstIsValid(BST* tree) {
+bool bstIsValid(BST* tree)
+{
     if ((tree == 0) || (tree->root == 0)) {
         return true;
     }
@@ -16,7 +16,6 @@ bool bstIsValid(BST* tree) {
         iteratorFree(&iterator);
         return true;
     }
-    
 
     while (iteratorHasNext(iterator)) {
         currValue = iteratorNext(iterator);
@@ -25,11 +24,10 @@ bool bstIsValid(BST* tree) {
             iteratorFree(&iterator);
             return false;
         }
-        
+
         prevValue = currValue;
     }
 
     iteratorFree(&iterator);
     return true;
-    
 }

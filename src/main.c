@@ -1,6 +1,6 @@
 #include "bst.h"
-#include "iterator.h"
 #include "checkBst.h"
+#include "iterator.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -68,12 +68,10 @@ void main()
 
     printf("BST2 IS VALID: %d\n", bstIsValid(tree2));
 
-
     tree2->root->rightChild->value = 999;
 
     printf("BST2 IS VALID: %d\n", bstIsValid(tree2));
 
     bstFree(tree);
     bstFree(tree2);
-
 }
