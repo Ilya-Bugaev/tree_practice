@@ -1,5 +1,6 @@
 #include "bst.h"
 #include "iterator.h"
+#include "statistic.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,5 +35,21 @@ void main()
     printf("%d\n", iteratorNext(iterator));
 
     iteratorFree(&iterator);
+
+    int k = 0;
+    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
+    k = 5;
+    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
+    k = 14;
+    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
+    k = 15;
+    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
     bstFree(tree);
+    tree = NULL;
+
+    printf("EMPTY: K: %d MIN:%d\n", k, bstKthMin(tree, k));
 }
