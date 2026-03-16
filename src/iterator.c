@@ -16,7 +16,6 @@ Iterator* iteratorInit(BST* tree)
     iterator->stack = stack;
 
     if (tree != NULL && tree->root != NULL) {
-        // printf("HERE pusk %d\n", iterator->stack->size);
         push(iterator->stack, tree->root);
         pushAllLeft(iterator, tree->root);
     }
@@ -40,7 +39,6 @@ static void pushAllLeft(Iterator* iterator, Node* node)
 
 bool iteratorHasNext(Iterator* iterator)
 {
-    // printf("stack size: %d\n", iterator);
     return (iterator != NULL) && (iterator->stack->size > 0);
 }
 
