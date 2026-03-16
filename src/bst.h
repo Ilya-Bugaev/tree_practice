@@ -11,7 +11,8 @@ typedef struct BST {
     Node* root;
 } BST;
 
-typedef enum Direction {LEFT, RIGHT} Direction;
+typedef enum Direction { LEFT,
+    RIGHT } Direction;
 
 void bstInsert(BST* tree, int value);
 

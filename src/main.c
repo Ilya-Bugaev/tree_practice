@@ -20,7 +20,7 @@ void main()
     bstInsert(tree, 56);
     bstInsert(tree, 54);
     bstInsert(tree, 53);
-    bstInsert(tree, 200);     
+    bstInsert(tree, 200);
     bstInsert(tree, 10);
     bstInsert(tree, 9);
     bstInsert(tree, 1);
@@ -32,7 +32,7 @@ void main()
     }
     printf("\n");
     printf("%d\n", iteratorNext(iterator));
-    
+
     iteratorFree(&iterator);
     bstFree(tree);
 }
