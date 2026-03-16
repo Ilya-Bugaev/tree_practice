@@ -1,5 +1,6 @@
 #include "bst.h"
 #include "iterator.h"
+#include "checkBst.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,5 +35,45 @@ void main()
     printf("%d\n", iteratorNext(iterator));
 
     iteratorFree(&iterator);
+
+    printf("BST IS VALID: %d\n", bstIsValid(tree));
+    tree->root->leftChild->leftChild->rightChild->leftChild->rightChild->value = 1000;
+    iterator = iteratorInit(tree);
+
+    while (iteratorHasNext(iterator)) {
+        printf("%d ", iteratorNext(iterator));
+    }
+    printf("\n");
+
+    iteratorFree(&iterator);
+
+    printf("BST IS VALID: %d\n", bstIsValid(tree));
+
+    BST* tree2 = malloc(sizeof(BST));
+    tree2->root = malloc(sizeof(Node));
+    tree2->root->value = 100;
+
+    tree2->root->leftChild = malloc(sizeof(Node));
+    tree2->root->leftChild->value = 99;
+
+    printf("BST2 IS VALID: %d\n", bstIsValid(tree2));
+
+    tree2->root->leftChild->value = 100;
+
+    printf("BST2 IS VALID: %d\n", bstIsValid(tree2));
+
+    tree2->root->rightChild = malloc(sizeof(Node));
+    tree2->root->leftChild->value = 99;
+    tree2->root->rightChild->value = 99;
+
+    printf("BST2 IS VALID: %d\n", bstIsValid(tree2));
+
+
+    tree2->root->rightChild->value = 999;
+
+    printf("BST2 IS VALID: %d\n", bstIsValid(tree2));
+
     bstFree(tree);
+    bstFree(tree2);
+
 }
