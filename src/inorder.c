@@ -40,6 +40,7 @@ void recPostorder(Node* node)
 void bstInorder(BST* tree)
 {
     if (tree == NULL) {
+        printf("The tree is empty\n");
         return;
     }
 
@@ -50,6 +51,7 @@ void bstInorder(BST* tree)
 void bstPreorder(BST* tree)
 {
     if (tree == NULL) {
+        printf("The tree is empty\n");
         return;
     }
 
@@ -60,6 +62,7 @@ void bstPreorder(BST* tree)
 void bstPostorder(BST* tree)
 {
     if (tree == NULL) {
+        printf("The tree is empty\n");
         return;
     }
 
