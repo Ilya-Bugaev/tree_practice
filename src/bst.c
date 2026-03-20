@@ -94,3 +94,34 @@ void bstFreeNode(Node* node)
     bstFreeNode(node->rightChild);
     free(node);
 }
+
+// Копирование всех узлов дерева
+static void copyAllNodes(Node* node, BST* targetTree)
+{
+    if (node == NULL) {
+        return;
+    }
+
+    bstInsert(targetTree, node->value);
+    copyAllNodes(node->leftChild, targetTree);
+    copyAllNodes(node->rightChild, targetTree);
+}
+
+BST* bstMerge(BST* tree1, BST* tree2)
+{
+    BST* result = malloc(sizeof(BST));
+    if (result == NULL) {
+        return NULL;
+    }
+    result->root = NULL;
+
+    if (tree1 != NULL && tree1->root != NULL) {
+        copyAllNodes(tree1->root, result);
+    }
+
+    if (tree2 != NULL && tree2->root != NULL) {
+        copyAllNodes(tree2->root, result);
+    }
+
+    return result;
+}
