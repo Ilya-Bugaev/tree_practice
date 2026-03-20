@@ -1,4 +1,4 @@
-#pragma onсe
+#pragma once
 #include <stdbool.h>
 
 typedef struct Node {
@@ -7,16 +7,23 @@ typedef struct Node {
     struct Node* rightChild;
 } Node;
 
-typedef struct {
+typedef struct BST {
     Node* root;
 } BST;
 
-typedef enum Direction { LEFT,
-    RIGHT } Direction;
+typedef enum Direction { LEFT, RIGHT } Direction;
 
+// Вставка значения в дерево
 void bstInsert(BST* tree, int value);
 
+// Проверка наличия значения в дереве
 bool bstContains(BST* tree, int value);
 
+// Освобождение памяти, занятой в дереве
 void bstFree(BST* tree);
+
+// Освобождение узла
 void bstFreeNode(Node* node);
+
+// Удаление узла из BST
+void bstDelete(BST* tree, int value);
