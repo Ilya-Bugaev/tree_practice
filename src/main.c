@@ -2,15 +2,24 @@
 #include "checkBst.h"
 #include "iterator.h"
 #include "statistic.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 
 void main()
 {
-    BST* tree = malloc(sizeof(BST));
+    /*BST* tree = malloc(sizeof(BST));
 
     tree->root = NULL;
+
+    bstInsert(tree, 6);
+    bstInsert(tree, 4);
+    bstInsert(tree, 5);
+
+    printf("%d\n", tree->root->value);
+    printf("%d\n", tree->root->leftChild->value);
+    printf("%d\n", tree->root->leftChild->rightChild->value);
+
+    bstFree(tree);
 
     bstInsert(tree, 100);
     bstInsert(tree, 60);
@@ -87,5 +96,5 @@ void main()
     printf("BST2 IS VALID: %d\n", bstIsValid(tree2));
 
     bstFree(tree);
-    bstFree(tree2);
+    bstFree(tree2);*/
 }

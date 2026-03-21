@@ -14,10 +14,17 @@ typedef struct BST {
 typedef enum Direction { LEFT,
     RIGHT } Direction;
 
+// Вставка значения в дерево
 void bstInsert(BST* tree, int value);
 
+// Проверка наличия значения в дереве
 bool bstContains(BST* tree, int value);
 
+// Освобождение памяти, занятой в дереве
 void bstFree(BST* tree);
 
+// Освобождение узла
 void bstFreeNode(Node* node);
+
+// Удаление узла из BST
+void bstDelete(BST* tree, int value);
