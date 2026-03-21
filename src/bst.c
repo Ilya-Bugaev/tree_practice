@@ -126,7 +126,7 @@ BST* bstMerge(BST* tree1, BST* tree2)
     return result;
 }
 
-void bstDelete(BST * tree, int value)
+void bstDelete(BST* tree, int value)
 {
     if (tree == NULL || tree->root == NULL) {
         return;
