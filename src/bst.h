@@ -26,4 +26,5 @@ void bstFree(BST* tree);
 // Освобождение узла
 void bstFreeNode(Node* node);
 
+// Слияние двух деревьев
 BST* bstMerge(BST* tree1, BST* tree2);
