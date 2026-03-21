@@ -1,6 +1,7 @@
 #include "bst.h"
 #include "checkBst.h"
 #include "iterator.h"
+#include "statistic.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,6 +37,19 @@ void main()
 
     iteratorFree(&iterator);
 
+    int k = 0;
+    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
+    k = 5;
+    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
+    k = 14;
+    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
+    k = 15;
+    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
+    printf("EMPTY: K: %d MIN:%d\n", k, bstKthMin(tree, k));
     printf("BST IS VALID: %d\n", bstIsValid(tree));
     tree->root->leftChild->leftChild->rightChild->leftChild->rightChild->value = 1000;
     iterator = iteratorInit(tree);
