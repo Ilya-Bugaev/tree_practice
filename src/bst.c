@@ -40,7 +40,6 @@ void bstInsert(BST* tree, int value)
     } else {
         if (dir == LEFT) {
             prev->leftChild = newNode;
-
         } else {
             prev->rightChild = newNode;
         }
