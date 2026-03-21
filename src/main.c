@@ -1,5 +1,4 @@
 #include "bst.h"
-#include "statistic.h"
 #include "checkBst.h"
 #include "iterator.h"
 #include "statistic.h"
@@ -19,7 +18,7 @@ void main()
     bstInsert(tree, 11);
     bstInsert(tree, 2);
     bstInsert(tree, 1);
-    
+
 
     bstInsert(tree, 100);
     bstInsert(tree, 60);

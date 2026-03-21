@@ -66,6 +66,7 @@ int bstMax(BST* tree)
         node = node->rightChild;
     }
     return node->value;
+}
 
 int bstKthMin(BST* tree, int k)
 {
