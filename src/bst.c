@@ -1,6 +1,13 @@
 #include "bst.h"
 #include <stdlib.h>
 
+BST* bstInit(void)
+{
+    BST* tree = malloc(sizeof(BST));
+    tree->root = NULL;
+    return tree;
+}
+
 void bstInsert(BST* tree, int value)
 {
     if (tree == NULL) {
@@ -66,21 +73,23 @@ bool bstContains(BST* tree, int value)
     return false;
 }
 
-void bstFree(BST* tree)
+void bstFree(BST** tree)
 {
-    if (tree == NULL) {
+    if (tree == NULL || *tree == NULL) {
         return;
     }
 
-    Node* root = tree->root;
+    Node* root = (*tree)->root;
 
     if (root == NULL) {
-        free(tree);
+        free(*tree);
         return;
     }
 
     bstFreeNode(root);
-    free(tree);
+    free(*tree);
+
+    *tree = NULL;
 }
 
 void bstFreeNode(Node* node)
@@ -108,7 +117,7 @@ static void copyAllNodes(Node* node, BST* targetTree)
 
 BST* bstMerge(BST* tree1, BST* tree2)
 {
-    BST* result = malloc(sizeof(BST));
+    BST* result = bstInit();
     if (result == NULL) {
         return NULL;
     }

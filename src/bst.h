@@ -16,6 +16,9 @@ typedef enum Direction {
     RIGHT
 } Direction;
 
+// Инициализация дерева
+BST* bstInit(void);
+
 // Вставка значения в дерево
 void bstInsert(BST* tree, int value);
 
@@ -23,7 +26,7 @@ void bstInsert(BST* tree, int value);
 bool bstContains(BST* tree, int value);
 
 // Освобождение памяти, занятой в дереве
-void bstFree(BST* tree);
+void bstFree(BST** tree);
 
 // Освобождение узла
 void bstFreeNode(Node* node);

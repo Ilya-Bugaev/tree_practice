@@ -1,5 +1,6 @@
 #include "bst.h"
 #include "checkBst.h"
+#include "inorder.h"
 #include "iterator.h"
 #include "statistic.h"
 #include <stdio.h>
@@ -7,9 +8,8 @@
 
 void main()
 {
-    /*BST* tree = malloc(sizeof(BST));
-    tree->root = NULL;
-
+    // A
+    BST* tree = bstInit();
     bstInsert(tree, 6);
     bstInsert(tree, 4);
     bstInsert(tree, 5);
@@ -19,23 +19,78 @@ void main()
     bstInsert(tree, 2);
     bstInsert(tree, 1);
 
+    printf("5: %d\n", bstContains(tree, 5));
+    printf("123: %d\n", bstContains(tree, 123));
 
-    bstInsert(tree, 100);
-    bstInsert(tree, 60);
-    bstInsert(tree, 50);
-    bstInsert(tree, 30);
-    bstInsert(tree, 57);
-    bstInsert(tree, 55);
-    bstInsert(tree, 52);
-    bstInsert(tree, 56);
-    bstInsert(tree, 54);
-    bstInsert(tree, 53);
-    bstInsert(tree, 200);
-    bstInsert(tree, 10);
+    bstFree(&tree);
+
+    // B
+    tree = bstInit();
+    bstInsert(tree, 6);
+    bstInsert(tree, 4);
+    bstInsert(tree, 5);
+    bstInsert(tree, 7);
     bstInsert(tree, 9);
+    bstInsert(tree, 11);
+    bstInsert(tree, 2);
     bstInsert(tree, 1);
 
-    Iterator* iterator = iteratorInit(tree);
+    bstInorder(tree);
+    bstPreorder(tree);
+    bstPostorder(tree);
+
+    // C
+    printf("max: %d\n", bstMax(tree));
+    printf("min: %d\n", bstMin(tree));
+    printf("height: %d\n", bstHeight(tree));
+    printf("size: %d\n", bstSize(tree));
+
+    // D
+    //  удаляем того, кто есть
+    printf("5: %d\n", bstContains(tree, 5));
+    bstDelete(tree, 5);
+    printf("5: %d\n", bstContains(tree, 5));
+    // удаляем того, кого нет
+    printf("5: %d\n", bstContains(tree, 5));
+    bstDelete(tree, 5);
+    printf("5: %d\n", bstContains(tree, 5));
+
+    // E
+    BST* tree2 = bstInit();
+    bstInsert(tree2, 13);
+    bstInsert(tree2, 32);
+    bstInsert(tree2, 57);
+    bstInsert(tree2, 123);
+    bstInsert(tree2, 111);
+    bstInsert(tree2, 55);
+    bstInsert(tree2, 23);
+    bstInsert(tree2, 98);
+
+    BST* treeRes = bstMerge(tree, tree2);
+    bstInorder(treeRes);
+
+    // F
+    printf("BST treeRes IS VALID: %d\n", bstIsValid(treeRes));
+
+    // G
+    int k = 0;
+    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
+    k = 5;
+    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
+    k = 8;
+    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
+    k = 9;
+    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
+    bstFree(&tree);
+
+    printf("EMPTY: K: %d MIN:%d\n", k, bstKthMin(tree, k));
+
+    // H
+    Iterator* iterator = iteratorInit(tree2);
 
     while (iteratorHasNext(iterator)) {
         printf("%d ", iteratorNext(iterator));
@@ -45,59 +100,6 @@ void main()
 
     iteratorFree(&iterator);
 
-    int k = 0;
-    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
-
-    k = 5;
-    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
-
-    k = 14;
-    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
-
-    k = 15;
-    printf("K: %d MIN:%d\n", k, bstKthMin(tree, k));
-
-    printf("EMPTY: K: %d MIN:%d\n", k, bstKthMin(tree, k));
-    printf("BST IS VALID: %d\n", bstIsValid(tree));
-    tree->root->leftChild->leftChild->rightChild->leftChild->rightChild->value = 1000;
-    iterator = iteratorInit(tree);
-
-    while (iteratorHasNext(iterator)) {
-        printf("%d ", iteratorNext(iterator));
-    }
-    printf("\n");
-
-    iteratorFree(&iterator);
-
-    printf("BST IS VALID: %d\n", bstIsValid(tree));
-
-    BST* tree2 = malloc(sizeof(BST));
-    tree2->root = malloc(sizeof(Node));
-    tree2->root->value = 100;
-
-    tree2->root->leftChild = malloc(sizeof(Node));
-    tree2->root->leftChild->value = 99;
-
-    printf("BST2 IS VALID: %d\n", bstIsValid(tree2));
-
-    tree2->root->leftChild->value = 100;
-
-    printf("BST2 IS VALID: %d\n", bstIsValid(tree2));
-
-    tree2->root->rightChild = malloc(sizeof(Node));
-    tree2->root->leftChild->value = 99;
-    tree2->root->rightChild->value = 99;
-
-    printf("BST2 IS VALID: %d\n", bstIsValid(tree2));
-
-    tree2->root->rightChild->value = 999;
-
-    printf("BST2 IS VALID: %d\n", bstIsValid(tree2));
-
-    printf("%d\n", bstMax(tree));
-    printf("%d\n", bstMin(tree));
-    printf("%d\n", bstHeight(tree));
-    printf("%d\n", bstSize(tree));
-    bstFree(tree);
-    bstFree(tree2);*/
+    bstFree(&tree2);
+    bstFree(&treeRes);
 }
