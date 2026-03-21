@@ -93,3 +93,88 @@ void bstFreeNode(Node* node)
     bstFreeNode(node->rightChild);
     free(node);
 }
+
+// Копирование всех узлов дерева
+static void copyAllNodes(Node* node, BST* targetTree)
+{
+    if (node == NULL) {
+        return;
+    }
+
+    bstInsert(targetTree, node->value);
+    copyAllNodes(node->leftChild, targetTree);
+    copyAllNodes(node->rightChild, targetTree);
+}
+
+BST* bstMerge(BST* tree1, BST* tree2)
+{
+    BST* result = malloc(sizeof(BST));
+    if (result == NULL) {
+        return NULL;
+    }
+    result->root = NULL;
+
+    if (tree1 != NULL && tree1->root != NULL) {
+        copyAllNodes(tree1->root, result);
+    }
+
+    if (tree2 != NULL && tree2->root != NULL) {
+        copyAllNodes(tree2->root, result);
+    }
+
+    return result;
+}
+
+void bstDelete(BST* tree, int value)
+{
+    if (tree == NULL || tree->root == NULL) {
+        return;
+    }
+
+    Node* current = tree->root;
+    Node* parent = NULL;
+
+    while (current != NULL && current->value != value) {
+        parent = current;
+        if (value < current->value) {
+            current = current->leftChild;
+        } else {
+            current = current->rightChild;
+        }
+    }
+
+    if (current == NULL) {
+        return;
+    }
+
+    if (current->leftChild == NULL || current->rightChild == NULL) {
+        Node* child = (current->leftChild != NULL) ? current->leftChild : current->rightChild;
+
+        if (parent == NULL) {
+            tree->root = child;
+        } else if (parent->leftChild == current) {
+            parent->leftChild = child;
+        } else {
+            parent->rightChild = child;
+        }
+
+        free(current);
+    } else {
+        Node* successorParent = current;
+        Node* successor = current->rightChild;
+
+        while (successor->leftChild != NULL) {
+            successorParent = successor;
+            successor = successor->leftChild;
+        }
+
+        current->value = successor->value;
+
+        if (successorParent == current) {
+            successorParent->rightChild = successor->rightChild;
+        } else {
+            successorParent->leftChild = successor->rightChild;
+        }
+        free(successor);
+    }
+}
